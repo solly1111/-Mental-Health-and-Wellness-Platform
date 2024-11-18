@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Test</title>
+    <style>
+        body {
+            background-image: url('https://via.placeholder.com/1600x900'); /* Replace with your background image URL */
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #0066cc;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-size: 1.2em;
+        }
+        .answers {
+            margin-top: 10px;
+        }
+        .answer-option {
+            margin-bottom: 10px;
+            display: block;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .submit-btn:hover {
+            background-color: #005bb5;
+        }
+        .result {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+            color: #0066cc;
+        }
+        .navigation-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        #submit-btn {
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        #back-btn {
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            background-color: #ff5733;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IQ Test</h1>
+        <div id="quiz-container">
+            <!-- Questions will be injected here -->
+        </div>
+        <div class="navigation-btns">
+            <button class="submit-btn" id="prev-btn" onclick="prevQuestion()" disabled>Previous</button>
+            <button class="submit-btn" id="next-btn" onclick="nextQuestion()">Next</button>
+        </div>
+        <button class="submit-btn" id="submit-btn" onclick="submitQuiz()" disabled>Submit</button>
+        <button class="submit-btn" id="back-btn" onclick="goBack()">Back</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const quizQuestions = [
+            { question: "What is the next number in the sequence: 2, 4, 8, 16, ...", options: ["18", "32", "64", "24"], answer: "32" },
+            { question: "Which shape does not belong?", options: ["Circle", "Square", "Rectangle", "Triangle"], answer: "Circle" },
+            { question: "What is 25% of 200?", options: ["50", "75", "100", "25"], answer: "50" },
+            { question: "If a train travels 80 km/h, how far will it travel in 3 hours?", options: ["240 km", "200 km", "160 km", "120 km"], answer: "240 km" },
+            { question: "Which of the following words is the opposite of 'Ascend'?", options: ["Climb", "Descend", "Rise", "Elevate"], answer: "Descend" },
+            { question: "If you rearrange the letters 'CIFAIPC', you would have the name of a(n):", options: ["City", "Animal", "Ocean", "River"], answer: "Ocean" },
+            { question: "Which number is the odd one out? 5, 7, 11, 14, 17", options: ["5", "7", "11", "14"], answer: "14" },
+            { question: "Which number completes the sequence: 3, 9, 27, ...", options: ["81", "72", "64", "54"], answer: "81" },
+            { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
+            { question: "Which is the next letter in the series: A, C, E, G, ...", options: ["H", "I", "J", "K"], answer: "I" },
+            { question: "What is the missing number: 1, 1, 2, 3, 5, 8, 13, ...", options: ["18", "21", "22", "21"], answer: "21" },
+            { question: "What is the odd number out: 3, 7, 11, 19, 23, 31", options: ["3", "7", "11", "19"], answer: "19" },
+            { question: "If a plane crashes on the border of the US and Canada, where do they bury the survivors?", options: ["US", "Canada", "They don't bury survivors", "None of the above"], answer: "They don't bury survivors" },
+            { question: "What is the next number in the sequence: 10, 20, 40, 80, ...", options: ["120", "160", "180", "100"], answer: "160" },
+            { question: "What day comes after Monday?", options: ["Sunday", "Tuesday", "Wednesday", "Thursday"], answer: "Tuesday" },
+            { question: "What is the result of 9 × 7?", options: ["56", "63", "72", "81"], answer: "63" },
+            { question: "If all roses are flowers and some flowers fade quickly, can we say that some roses fade quickly?", options: ["Yes", "No", "Not enough information", "None of the above"], answer: "Not enough information" },
+            { question: "How many months have 28 days?", options: ["1", "2", "12", "None"], answer: "12" },
+            { question: "What is the sum of 18 + 14?", options: ["32", "22", "33", "28"], answer: "32" },
+            { question: "Which animal is known as the King of the Jungle?", options: ["Lion", "Elephant", "Tiger", "Bear"], answer: "Lion" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizQuestions.length);
+
+        function loadQuestion() {
+            const questionContainer = document.getElementById("quiz-container");
+            const question = quizQuestions[currentQuestionIndex];
+
+            questionContainer.innerHTML = `
+                <div class="question">
+                    <p>${question.question}</p>
+                    <div class="answers">
+                        ${question.options.map(option => `
+                            <label class="answer-option">
+                                <input type="radio" name="question${currentQuestionIndex}" value="${option}" onclick="markAnswer(${currentQuestionIndex}, '${option}')"> ${option}
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Enable/Disable navigation buttons
+            document.getElementById("prev-btn").disabled = currentQuestionIndex === 0;
+            document.getElementById("next-btn").disabled = currentQuestionIndex === quizQuestions.length - 1;
+            document.getElementById("submit-btn").disabled = userAnswers.every(answer => answer === undefined);
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        function markAnswer(questionIndex, answer) {
+            userAnswers[questionIndex] = answer;
+            document.getElementById("submit-btn").disabled = userAnswers.every(ans => ans === undefined);
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === quizQuestions[index].answer) {
+                    score++;
+                }
+            });
+
+            const resultContainer = document.getElementById("result");
+            const iqScore = calculateIQ(score);
+            resultContainer.innerHTML = `
+                You answered ${score} out of 20 correctly. 
+                Your IQ level is ${iqScore}. 
+                ${getMotivation(iqScore)}
+            `;
+        }
+
+        function calculateIQ(score) {
+            if (score >= 18) return 130; // Genius
+            if (score >= 15) return 120; // High Average IQ
+            if (score >= 12) return 110; // Above Average IQ
+            if (score >= 9) return 90;  // Below Average IQ
+            return 80; // Low IQ
+        }
+
+        function getMotivation(iqScore) {
+            if (iqScore >= 130) return "You're a genius! Keep up the amazing work!";
+            if (iqScore >= 120) return "Great job! You're very intelligent!";
+            if (iqScore >= 110) return "Good work! You're pretty smart!";
+            if (iqScore >= 90) return "Keep practicing, you can improve!";
+            return "Don't worry, everyone has room to grow. Keep trying!";
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        // Load the first question
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>

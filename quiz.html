@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anxiety Self-Assessment Quiz</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #4a90e2, #81c4f3);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+    .header p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.5;
+    }
+
+    /* Quiz Section */
+    .quiz-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .quiz-container h2 {
+      font-size: 2em;
+      color: #4a90e2;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .quiz-container form {
+      font-size: 1.1em;
+    }
+    .quiz-container form .question {
+      margin-bottom: 20px;
+    }
+    .quiz-container form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .quiz-container form button {
+      display: block;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px auto 0;
+    }
+    .quiz-container form button:hover {
+      background-color: #3678c1;
+    }
+
+    /* Result Section */
+    .result {
+      text-align: center;
+      font-size: 1.5em;
+      color: #333;
+      margin-top: 20px;
+    }/* Back Button Styling */
+    .back-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #81c4f3;
+      transform: translateY(-5px);
+    }
+
+    .back-button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Anxiety Self-Assessment Quiz</h1>
+    <p>Answer the following questions to get an idea of your anxiety levels.</p>
+  </header>
+
+  <!-- Quiz Section -->
+  <div class="quiz-container">
+    <h2>Quiz</h2>
+    <form id="quizForm">
+      <!-- Original Questions -->
+      <div class="question">
+        <p>1. How often do you feel nervous, anxious, or on edge?</p>
+        <label><input type="radio" name="q1" value="2"> Almost always</label>
+        <label><input type="radio" name="q1" value="1"> Sometimes</label>
+        <label><input type="radio" name="q1" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>2. Do you find it hard to stop worrying once you start?</p>
+        <label><input type="radio" name="q2" value="2"> Almost always</label>
+        <label><input type="radio" name="q2" value="1"> Sometimes</label>
+        <label><input type="radio" name="q2" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>3. Do you experience physical symptoms like rapid heartbeat or sweating due to anxiety?</p>
+        <label><input type="radio" name="q3" value="2"> Almost always</label>
+        <label><input type="radio" name="q3" value="1"> Sometimes</label>
+        <label><input type="radio" name="q3" value="0"> Rarely</label>
+      </div>
+
+      <!-- Additional Questions -->
+      <div class="question">
+        <p>4. Do you avoid certain situations because of fear or worry?</p>
+        <label><input type="radio" name="q4" value="2"> Almost always</label>
+        <label><input type="radio" name="q4" value="1"> Sometimes</label>
+        <label><input type="radio" name="q4" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>5. Do you have trouble sleeping because of racing thoughts?</p>
+        <label><input type="radio" name="q5" value="2"> Almost always</label>
+        <label><input type="radio" name="q5" value="1"> Sometimes</label>
+        <label><input type="radio" name="q5" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>6. Do you experience muscle tension or headaches due to stress?</p>
+        <label><input type="radio" name="q6" value="2"> Almost always</label>
+        <label><input type="radio" name="q6" value="1"> Sometimes</label>
+        <label><input type="radio" name="q6" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>7. How often do you feel overwhelmed by tasks or responsibilities?</p>
+        <label><input type="radio" name="q7" value="2"> Almost always</label>
+        <label><input type="radio" name="q7" value="1"> Sometimes</label>
+        <label><input type="radio" name="q7" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>8. Do you have difficulty concentrating because of worry?</p>
+        <label><input type="radio" name="q8" value="2"> Almost always</label>
+        <label><input type="radio" name="q8" value="1"> Sometimes</label>
+        <label><input type="radio" name="q8" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>9. Do you feel irritable or easily frustrated?</p>
+        <label><input type="radio" name="q9" value="2"> Almost always</label>
+        <label><input type="radio" name="q9" value="1"> Sometimes</label>
+        <label><input type="radio" name="q9" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>10. Do you have a constant fear of bad things happening?</p>
+        <label><input type="radio" name="q10" value="2"> Almost always</label>
+        <label><input type="radio" name="q10" value="1"> Sometimes</label>
+        <label><input type="radio" name="q10" value="0"> Rarely</label>
+      </div>    <div class="question">
+        <p>11. Do you experience panic attacks?</p>
+        <label><input type="radio" name="q24" value="2"> Almost always</label>
+        <label><input type="radio" name="q24" value="1"> Sometimes</label>
+        <label><input type="radio" name="q24" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>12. Do you often feel overwhelmed in social situations?</p>
+        <label><input type="radio" name="q25" value="2"> Almost always</label>
+        <label><input type="radio" name="q25" value="1"> Sometimes</label>
+        <label><input type="radio" name="q25" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>13. Do you avoid talking about your feelings with others?</p>
+        <label><input type="radio" name="q26" value="2"> Almost always</label>
+        <label><input type="radio" name="q26" value="1"> Sometimes</label>
+        <label><input type="radio" name="q26" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>14. Do you find yourself constantly comparing yourself to others?</p>
+        <label><input type="radio" name="q27" value="2"> Almost always</label>
+        <label><input type="radio" name="q27" value="1"> Sometimes</label>
+        <label><input type="radio" name="q27" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>15. Do you feel like you are not in control of your emotions?</p>
+        <label><input type="radio" name="q28" value="2"> Almost always</label>
+        <label><input type="radio" name="q28" value="1"> Sometimes</label>
+        <label><input type="radio" name="q28" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>16. Do you feel the need to double-check things frequently?</p>
+        <label><input type="radio" name="q29" value="2"> Almost always</label>
+        <label><input type="radio" name="q29" value="1"> Sometimes</label>
+        <label><input type="radio" name="q29" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>17. Do you find yourself easily startled or on edge?</p>
+        <label><input type="radio" name="q30" value="2"> Almost always</label>
+        <label><input type="radio" name="q30" value="1"> Sometimes</label>
+        <label><input type="radio" name="q30" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>18. Do you feel emotionally drained at the end of the day?</p>
+        <label><input type="radio" name="q31" value="2"> Almost always</label>
+        <label><input type="radio" name="q31" value="1"> Sometimes</label>
+        <label><input type="radio" name="q31" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>19. Do you avoid making decisions because of fear of making the wrong one?</p>
+        <label><input type="radio" name="q32" value="2"> Almost always</label>
+        <label><input type="radio" name="q32" value="1"> Sometimes</label>
+        <label><input type="radio" name="q32" value="0"> Rarely</label>
+      </div>
+      <div class="question">
+        <p>20. Do you feel like you’re stuck in a cycle of worry or fear?</p>
+        <label><input type="radio" name="q33" value="2"> Almost always</label>
+        <label><input type="radio" name="q33" value="1"> Sometimes</label>
+        <label><input type="radio" name="q33" value="0"> Rarely</label>
+      </div>
+
+      <!-- Add more questions following the same structure, up to 20 additional questions -->
+      <!-- For brevity, only 10 extra questions are shown. Repeat structure to reach 23 total questions -->
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Calculate the score
+      const formData = new FormData(this);
+      let score = 0;
+      for (let value of formData.values()) {
+        score += parseInt(value, 10);
+      }
+
+      // Display the result based on the score
+      const resultDiv = document.getElementById("result");
+      if (score >= 40) {
+        resultDiv.textContent = "High anxiety levels. Consider seeking help from a professional.";
+      } else if (score >= 20) {
+        resultDiv.textContent = "Moderate anxiety levels. Practice relaxation techniques or consider talking to someone.";
+      } else {
+        resultDiv.textContent = "Low anxiety levels. Keep maintaining a healthy mind!";
+      }
+    });
+  </script>
+ <button class="back-button" onclick="window.history.back()">Back</button>
+</body>
+</html>

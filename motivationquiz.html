@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivation </title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a90e2, #81c4f3);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: auto;
+            line-height: 1.5;
+        }
+
+        .slide-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .slide {
+            min-width: 100vw;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide p {
+            font-family: Courier, monospace;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .nav-button {
+            pointer-events: all;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            user-select: none;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #81c4f3;
+            transform: translateY(-5px);
+        }
+
+        .back-button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Motivation </h1>
+        <p>Get inspired to achieve greatness! Swipe through 70 motivational messages that will lift your spirit and ignite your passion.</p>
+    </div>
+
+    <div class="slide-container" id="slideContainer"></div>
+
+    <div class="nav-buttons">
+        <button class="nav-button" id="prevSlide">&larr;</button>
+        <button class="nav-button" id="nextSlide">&rarr;</button>
+    </div>
+
+    <button class="back-button" onclick="window.history.back()">Back</button>
+
+    <script>
+      
+            
+        const motivationalTexts = [
+            
+    "Believe in yourself, for you are capable of greatness. Challenges may test your limits, but they will never define your potential. Every small step counts toward your goal. Celebrate your journey, not just the destination. Persistence is the bridge between dreams and reality. Remember, even the mightiest tree starts as a tiny seed. Keep nurturing your aspirations, and they will flourish.",
+    "The road to success is paved with hard work and determination. Setbacks are opportunities in disguise, teaching you resilience and courage. Focus on progress, not perfection. Let your passion guide you when the path seems unclear. Greatness lies not in never falling, but in rising every time you fall. Embrace failure as a stepping stone to success. Keep pushing forward, and the results will follow.",
+    "You are the author of your life story. Every choice you make shapes your future. Write with purpose, determination, and love. Success is not about avoiding failure but learning and growing from it. Each day offers a blank page—make it meaningful. Your journey inspires those around you, even when you don’t realize it. Believe in your potential and keep striving for excellence.",
+    "Success is not a destination, but a journey. It is not about how many times you fall, but how many times you rise. Stay determined and work hard, even when no one is watching. Trust the process, and remember that every struggle is an opportunity to grow. Your time is now—don’t let doubts hold you back. Believe in your dreams and keep moving toward them, step by step. You are stronger than you think.",
+    "No dream is too big to achieve. It requires hard work, dedication, and a willingness to learn. Do not be afraid of the obstacles that come your way; they are there to test your determination. The path may be difficult, but the rewards are worth every effort. Take risks and push beyond your comfort zone. Every challenge you overcome brings you one step closer to your goal. Keep moving forward with courage and passion.",
+    "You are capable of more than you know. Don’t let self-doubt hold you back from achieving your full potential. Each day is a new opportunity to make progress. Stay focused, work hard, and never give up. Small steps lead to big results over time. Remember, nothing worth having comes easy. Keep fighting for your dreams, and success will follow.",
+    "The best way to predict the future is to create it. Don’t wait for opportunities to come to you; go out and make them happen. Every action you take today shapes the future you will have tomorrow. Be bold, be fearless, and never settle for less than what you deserve. Trust in your abilities, and always aim higher. You have the power to create the life you want. Stay committed to your vision, and the world will open up for you.",
+    "Great things never come from comfort zones. To achieve something extraordinary, you must be willing to take risks and step into the unknown. Challenges are a natural part of growth. Embrace them and use them as fuel for your success. Do not fear failure, for it is simply a stepping stone on your journey. Believe in yourself and your ability to overcome any obstacle. The world is full of opportunities waiting for you.",
+    "The road to success is never easy, but it is always worth it. Don’t be discouraged by the hard times; they are only temporary. Keep your eyes on the prize, and never stop working toward your goals. Every setback is a lesson that brings you closer to your dreams. You have the strength to persevere, even when the going gets tough. Keep believing in yourself and your vision. Success will come to those who are patient and persistent.",
+    "The only limits that exist are the ones you place on yourself. Push beyond your boundaries and strive for more. You have the potential to achieve anything you set your mind to. It’s not about talent; it’s about perseverance and determination. Every day is a new chance to make progress. Don’t waste it. Keep pushing forward, and one day, you’ll look back and realize how far you’ve come.",
+    "Success is built on the foundation of hard work, perseverance, and resilience. Every challenge you face is an opportunity to grow stronger. Don’t be afraid to fail—failure is simply part of the process. Learn from it, adapt, and keep moving forward. Your dreams are worth the effort, and with determination, you will make them a reality. Trust the journey, even when it’s difficult. Keep going, and success will be within your reach.",
+    "The path to success is filled with twists and turns, but every step you take brings you closer to your goal. Stay focused on your vision, and never let distractions get in your way. Hard work and dedication will pay off in the end. Don’t be afraid of challenges; they are the stepping stones to your success. Embrace the journey, no matter how difficult it may seem. Believe in yourself and trust that you are capable of achieving great things.",
+    "Success is not measured by how many times you fall, but by how many times you rise after falling. Every setback is a lesson, and every failure is an opportunity to learn and grow. Stay determined, and don’t let obstacles discourage you. Keep pushing forward, no matter how hard it gets. Your dreams are worth fighting for, and with persistence, you will achieve them. Believe in yourself, and the world will believe in you too.",
+    "You are capable of achieving anything you set your mind to. Don’t let fear or doubt hold you back. Every challenge you face is an opportunity to grow stronger and more resilient. Stay focused on your goals and take one step at a time. Success is a journey, not a destination. Keep moving forward, even when it seems like nothing is happening. Your hard work will pay off in the end.",
+    "Believe in your dreams and never give up on them. The road to success may be long, but it is always worth it. Every small step you take brings you closer to your ultimate goal. Stay focused, work hard, and trust the process. No obstacle is too great for you to overcome. You have the strength and resilience to keep going, no matter what. Keep believing in yourself, and success will follow.",
+    "Don’t wait for the perfect moment—create it. Opportunities don’t always come knocking at your door; sometimes, you have to go out and find them. Be proactive and take control of your destiny. Trust in your abilities, and believe that you are capable of achieving greatness. The road to success may not always be easy, but it will be worth it. Keep pushing forward, even when the going gets tough. Your future is in your hands.",
+    "Every setback is a setup for a comeback. When things get tough, remember that challenges are just opportunities in disguise. Stay focused, stay positive, and keep working toward your goals. You have the strength to overcome any obstacle that comes your way. Don’t let fear hold you back—embrace it as a part of the process. Trust in yourself, and the journey will be worth it. Keep moving forward with confidence and determination.",
+    "Believe in your ability to make a difference. Every action you take, no matter how small, contributes to your success. Stay positive, stay focused, and keep working toward your dreams. Don’t let setbacks discourage you; they are just part of the process. Success is not about avoiding failure; it’s about learning from it and growing stronger. Keep believing in yourself, and you will achieve greatness.",
+    "You are not defined by your circumstances; you are defined by how you respond to them. Life may present challenges, but you have the power to overcome them. Stay focused on your goals, and take consistent action toward them. Don’t let fear or doubt hold you back. Believe in your strength and resilience. You are capable of achieving anything you set your mind to. Keep moving forward with faith and determination.",
+    "Your future is created by what you do today, not tomorrow. Take action now, and don’t wait for the perfect moment. Every step you take, no matter how small, brings you closer to your goal. Stay focused, stay committed, and never give up. Success is built on consistent effort and determination. Believe in yourself, and the results will come. Keep pushing forward with confidence and passion.",
+    "The only way to achieve the impossible is to believe it is possible. Don’t let anyone or anything convince you that your dreams are out of reach. Stay focused on your goals, and take consistent action toward them. Trust in yourself and your abilities. Every obstacle you face is an opportunity to grow stronger. Keep moving forward, no matter how difficult the journey may seem. Believe in your dreams, and they will become a reality.",
+    "Success doesn’t come overnight—it’s the result of consistent effort and hard work. Stay focused on your goals and take action every day. The road may be tough, but each step brings you closer to your dreams. Don’t be afraid of failure—it’s a natural part of the process. Keep pushing forward, and success will follow. Trust the journey, and never give up. Your dreams are worth the effort.",
+    "The only limits you have are the ones you place on yourself. Don’t let fear or doubt hold you back from achieving greatness. Stay focused on your goals, and take consistent action toward them. Every day is an opportunity to move closer to your dreams. Keep believing in yourself, and you will overcome any obstacle that comes your way. Stay positive, stay determined, and never give up.",
+    "You are capable of achieving more than you think. Don’t let setbacks discourage you—they are just temporary obstacles. Stay focused, stay determined, and keep working toward your dreams. Success is built on hard work, resilience, and persistence. Keep moving forward, and you will reach your goals. Believe in yourself, and success will follow. Keep pushing forward, no matter how tough it gets.",
+    "Don’t wait for opportunities to come to you—create them. Every day is a new chance to make progress toward your goals. Stay focused, stay positive, and never give up. The road to success is paved with hard work and perseverance. Keep pushing forward, and you will achieve your dreams. Believe in your abilities, and trust that everything is happening for a reason.",
+    "The secret to success is consistency. Keep working hard, even when you don’t see immediate results. Every small step you take brings you closer to your goal. Stay focused, stay determined, and never give up. Success is built on perseverance and resilience. Believe in yourself, and you will achieve great things. Keep pushing forward, and your efforts will be rewarded.",
+    "Success is not a destination, but a journey. Every day is an opportunity to grow and improve. Stay focused on your goals, and take consistent action toward them. Don’t let setbacks discourage you—they are just part of the process. Keep pushing forward, and success will follow. Believe in yourself and trust the journey. You are capable of achieving anything you set your mind to.",
+    "The road to success may be long, but every step you take brings you closer to your dreams. Stay focused, stay determined, and never give up. Don’t be afraid of challenges—they are opportunities in disguise. Keep pushing forward, and you will overcome any obstacle that comes your way. Success is not about avoiding failure; it’s about learning from it and growing stronger. Keep going, and success will be yours.",
+    "Your potential is limitless. Don’t let anyone or anything convince you that you are not capable of achieving greatness. Stay focused on your goals, and take consistent action toward them. Every obstacle you face is an opportunity to grow stronger. Keep believing in yourself, and the world will open up for you. You have the power to create the life you want. Keep moving forward with confidence and determination."
+];
+
+
+
+
+        function shuffleArray(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function renderSlides() {
+            const slideContainer = document.getElementById('slideContainer');
+            slideContainer.innerHTML = '';
+            const shuffledTexts = shuffleArray(motivationalTexts);
+            shuffledTexts.forEach((text) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `<p>${text}</p>`;
+                slideContainer.appendChild(slide);
+            });
+        }
+
+        let currentSlide = 0;
+        const slideContainer = document.getElementById('slideContainer');
+        const prevSlideButton = document.getElementById('prevSlide');
+        const nextSlideButton = document.getElementById('nextSlide');
+
+        function updateSlidePosition() {
+            slideContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+        }
+
+        prevSlideButton.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlidePosition();
+            }
+        });
+
+        nextSlideButton.addEventListener('click', () => {
+            if (currentSlide < motivationalTexts.length - 1) {
+                currentSlide++;
+                updateSlidePosition();
+            }
+        });
+
+        window.onload = () => {
+            renderSlides();
+        };
+    </script>
+</body>
+</html>

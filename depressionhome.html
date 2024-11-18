@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depression Self-Assessment</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #4a90e2, #81c4f3);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+    .header p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.5;
+    }
+
+    /* Content Section */
+    .content-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .content-container h2 {
+      font-size: 2em;
+      color: #4a90e2;
+      margin-bottom: 20px;
+    }
+    .content-container p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Button Styling */
+    .start-quiz-button {
+      display: inline-block;
+      background-color: #4a90e2;
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    .start-quiz-button:hover {
+      background-color: #3678c1;
+    }
+    /* Back Button Styling */
+   .back-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #81c4f3;
+      transform: translateY(-5px);
+    }
+
+    .back-button:focus {
+      outline: none;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Depression Self-Assessment</h1>
+    <p>Answer a few questions to see if you might be experiencing symptoms of depression.</p>
+  </header>
+
+  <!-- Content Section -->
+  <div class="content-container">
+    <h2>Take the Quiz</h2>
+    <p>This self-assessment can help you understand your emotional well-being better. Your responses are completely private and for informational purposes only.</p>
+    <a href="depressionq.html" class="start-quiz-button">Start Quiz</a>
+  </div>
+  <button class="back-button" onclick="window.history.back()">Back</button>
+
+</body>
+</html>

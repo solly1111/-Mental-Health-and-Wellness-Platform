@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health and Wellness Platform</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #4a90e2, #81c4f3);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+    .header p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.5;
+    }
+
+    /* Button Section */
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .button a {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #4a90e2;
+      padding: 20px 35px;
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 15px;
+      border: 2px solid #4a90e2;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 250px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    .button a:hover {
+      background-color: #4a90e2;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Button Description Section */
+    .description {
+      font-size: 1.1em;
+      margin-top: 15px;
+      max-width: 600px;
+      text-align: center;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #f0f2f5;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #ccc;
+    }
+    .footer p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1em;
+      color: #666;
+    }
+ /* Back Button Styling */
+ .back-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #81c4f3;
+      transform: translateY(-5px);
+    }
+
+    .back-button:focus {
+      outline: none;
+    }
+    
+
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Welcome to the Mental Health and Wellness Platform</h1>
+    <p>Your trusted resource for mental well-being, offering guidance, community support, and professional help all in one place.</p>
+
+    <!-- Buttons Section -->
+    <div class="buttons">
+      <div class="button">
+        <a href="meditationhome.html">Meditation</a>
+        <p class="description">Take a deep breath and relax. Explore different meditation practices that help calm your mind, reduce stress, and enhance focus. Your mental peace starts here.</p>
+      </div>
+
+      <div class="button">
+        <a href="iqtest.html">IQ Test</a>
+        <p class="description">Challenge your intellect and discover your cognitive strengths. Our IQ test will help you assess your problem-solving abilities, logic, and reasoning skills.</p>
+      </div>
+
+      <div class="button">
+        <a href="depressionhome.html">Depression</a>
+        <p class="description">Depression is more common than you think, but you're not alone. Learn about the symptoms, causes, and solutions to help manage and overcome feelings of sadness.</p>
+      </div>
+
+      <div class="button">
+        <a href="motivationquiz.html">Motivation</a>
+        <p class="description">When life gets tough, motivation is the fuel that keeps you going. Find inspiration and powerful techniques to ignite your inner drive and achieve your goals.</p>
+      </div>
+
+      <div class="button">
+        <a href="quizpage.html">Anxiety</a>
+        <p class="description">Understand what causes anxiety and explore methods to cope with it effectively. Learn breathing exercises, mindfulness techniques, and how to regain control.</p>
+      </div>
+
+      <div class="button">
+        <a href="education.html">Education</a>
+        <p class="description">Empower yourself with knowledge. Access a variety of educational resources that improve your skills, boost your confidence, and help you grow in both personal and professional life.</p>
+      </div>
+
+      <div class="button">
+        <a href="testq.html">Quote of the Day</a>
+        <p class="description">Start your day with positivity and inspiration. Get a fresh quote each day that motivates, uplifts, and encourages you to face the challenges ahead with courage.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Footer Section with Mission Statement -->
+  <footer class="footer">
+    <p>
+      Our mission is to support mental health by providing a safe, accessible, and inclusive platform for everyone. We aim to offer resources, tools, and community spaces to empower individuals in their mental wellness journey. We're here to support you every step of the way.
+    </p>
+    <p>MS MOKOENA</p>
+  </footer>
+  <button class="back-button" onclick="window.history.back()">Back</button>
+
+</body>
+</html>

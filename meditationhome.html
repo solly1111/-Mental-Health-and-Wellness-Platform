@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guided Meditation</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #4a90e2, #81c4f3);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+    .header p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.5;
+    }
+
+    /* Meditation Section */
+    .meditation-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .meditation-container h2 {
+      font-size: 2em;
+      color: #4a90e2;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .meditation-container p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .meditation-container .start-button {
+      display: block;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      margin: 20px auto 0;
+      text-decoration: none;
+    }
+    .meditation-container .start-button:hover {
+      background-color: #3678c1;
+    }
+ /* Back Button Styling */
+ .back-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #81c4f3;
+      transform: translateY(-5px);
+    }
+
+    .back-button:focus {
+      outline: none;
+    }
+    
+ 
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Guided Meditation</h1>
+    <p>Follow this guided meditation to help calm your mind and reduce stress.</p>
+  </header>
+
+  <!-- Meditation Section -->
+  <div class="meditation-container">
+    <h2>Meditation Guide</h2>
+    <p>
+      Take a few moments to relax and focus on your breathing. Follow this simple guided meditation to calm your mind and reduce anxiety. 
+      Sit comfortably in a quiet space, close your eyes, and take a deep breath in. Hold it for a moment, and then exhale slowly.
+    </p>
+    <p>
+      Imagine a peaceful place, such as a beach or a forest. Focus on the sounds, sights, and sensations of this place. 
+      Continue breathing deeply and allow your mind to gently let go of any stress or worries.
+    </p>
+    <a href="meditation.html" class="start-button">Start Meditation</a>
+  </div>
+  <button class="back-button" onclick="window.history.back()">Back</button>
+
+</body>
+</html>
